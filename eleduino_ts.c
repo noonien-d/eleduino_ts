@@ -80,10 +80,17 @@ static void usb_eleduino_ts_irq(struct urb *urb){
 
   pressure = 200;
 
-  input_report_abs(dev, ABS_X, x);
-  input_report_abs(dev, ABS_Y, y);
-  input_report_abs(dev, ABS_PRESSURE, pressure);
-  input_report_key(dev, BTN_TOUCH, 1);
+  if (x != 0)
+  {
+    input_report_abs(dev, ABS_X, x);
+    input_report_abs(dev, ABS_Y, y);
+    input_report_abs(dev, ABS_PRESSURE, pressure);
+  }
+
+  if (touchpoints > 0)
+    input_report_key(dev, BTN_TOUCH, 1);
+  else
+    input_report_key(dev, BTN_TOUCH, 0);
 
   input_sync(dev);
 
