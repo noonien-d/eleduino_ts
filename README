@@ -1,1 +1,10 @@
-USB Touchscreen driver for Eleduino 7 inch tft lcd display with touchscreen 
+USB Touchscreen driver for Eleduino 7 inch tft lcd display with touchscreen
+
+
+Notes:
+
+Instead of unloading the usbhid-module using the load.sh script, you can create a modprobe configuration file to prevent usbhid from claiming the touchscreen device.
+
+/etc/modprobe.d/usbhid_touch.conf
+
+options usbhid quirks=0x0eef:0x0005:0x0004
