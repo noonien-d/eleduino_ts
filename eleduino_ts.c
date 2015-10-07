@@ -73,12 +73,11 @@ static void usb_eleduino_ts_irq(struct urb *urb){
 
   printk(KERN_ALERT "usb_eleduino_ts_irq");
 
+  touchpoints = data[1];
 
-  touchpoints = data[2] & 0x07;
-  printk(KERN_ALERT "touchpoints %d", touchpoints);
+  x = ((unsigned int)(data[2] & 0xFF) << 8) | ((unsigned int)data[3]);
+  y = ((unsigned int)(data[4] & 0xFF) << 8) | ((unsigned int)data[5]);
 
-  x = (int)(data[3] & 0x0F) << 8 | (int)data[4];
-  y = (int)(data[5] & 0x0F) << 8 | (int)data[6];
   pressure = 200;
 
   input_report_abs(dev, ABS_X, x);
