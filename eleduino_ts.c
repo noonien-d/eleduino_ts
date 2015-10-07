@@ -63,15 +63,13 @@ struct usb_eleduino_ts {
 
 
 static void usb_eleduino_ts_irq(struct urb *urb){
-  
+
   int status;
 
   struct usb_eleduino_ts *eleduino_ts = urb->context;
   u8 *data = eleduino_ts->data;
   struct input_dev *dev = eleduino_ts->input_dev;
   int x, y, pressure, touchpoints;
-
-  printk(KERN_ALERT "usb_eleduino_ts_irq");
 
   touchpoints = data[1];
 
@@ -134,7 +132,7 @@ static int usb_eleduino_ts_probe(struct usb_interface *intf, const struct usb_de
   int pipe, maxp;
   int err = -ENOMEM;
 
-  printk(KERN_ALERT "usb_eleduino_ts_probe");  
+  printk(KERN_ALERT "usb_eleduino_ts_probe");
 
   if (interface->desc.bNumEndpoints != 2){
     printk(KERN_ALERT "usb_eleduino_ts_probe: 1 no device found");
