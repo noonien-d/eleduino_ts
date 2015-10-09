@@ -1,0 +1,21 @@
+Installation using DKMS:
+
+DKMS will automaticaly (re)build the module for your kernel.
+
+0. install dkms and kernel-headers
+
+1. copy sources to /usr/src/eleduino_ts-0.0.2
+
+2. # dkms build -m eleduino_ts -v 0.0.2
+
+3. # dkms install -m eleduino_ts -v 0.0.2
+
+
+By default, the usbhid module will grab the touch device.
+Instead of unloading the usbhid-module using the load.sh script, you
+can create a modprobe configuration file to prevent usbhid from
+claiming the touchscreen device.
+
+/etc/modprobe.d/usbhid_touch.conf
+
+options usbhid quirks=0x0eef:0x0005:0x0004

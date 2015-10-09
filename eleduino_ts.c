@@ -30,7 +30,7 @@
 #include <linux/usb/input.h>
 #include <linux/usb.h>
 
-#define DRIVER_VERSION "v0.0.1"
+#define DRIVER_VERSION "v0.0.2"
 #define DRIVER_DESC    "Eleduino tft 7inch display. USB touchscreen driver."
 #define DRIVER_LICENSE "GPL"
 #define DRIVER_AUTHOR  "arhichief"

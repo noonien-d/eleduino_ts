@@ -1,10 +1,18 @@
 USB Touchscreen driver for Eleduino 7 inch tft lcd display with touchscreen
 
+USB ID: 0eef:0005 D-WAV Scientific Co., Ltd
 
-Notes:
 
-Instead of unloading the usbhid-module using the load.sh script, you can create a modprobe configuration file to prevent usbhid from claiming the touchscreen device.
+Requirements:
 
-/etc/modprobe.d/usbhid_touch.conf
+- kernel headers
+- dkms (see INSTALL)
 
-options usbhid quirks=0x0eef:0x0005:0x0004
+To build the module, execute make:
+
+$ make
+
+To load the module, run ./load.sh. It will un- and reload usbhid, so you may
+experience problems with your usb input devices. See INSTALL to avoid this problem.
+
+# ./load.sh
