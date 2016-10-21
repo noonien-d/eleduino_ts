@@ -19,3 +19,8 @@ claiming the touchscreen device.
 /etc/modprobe.d/usbhid_touch.conf
 
 options usbhid quirks=0x0eef:0x0005:0x0004
+
+If usbhid is not compiled as a loadable module, you can block usbhid
+by adding the following to the kernel boot options:
+
+usbhid.quirks=0x0eef:0x0005:0x0004
